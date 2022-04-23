@@ -1,0 +1,58 @@
+#cloud-config
+
+runcmd:
+- [touch, /root/cloud-init-worked]
+
+users:
+  - name: stream
+    groups: users, admin, sudo
+    gecos: VM Control User
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB4PmWN0Ipp8dllqr66Vf3TRoq7Sx+hf1QfD7fAGwIl0 vm-service
+      - ssh-ed25519 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDOxnANuMT7aImxlfYFDEhwtlVibT/TIwojZ56pnC65cZ/GRtviQ8vYpW2qbKwUONpV1O+uwHtmtBQLTfTINa7K2yHZLcXo8Qzsx1sQ94JuqKzLu0IRnJAGaiuP9f2ffysHnaJsHj2YSqKhXAgnvPa/w6asAjBeZM7D8h3Scuj4YGEsuNE6KrjbSASAPo3tRnXoegjCegN1saSyONUL58IP+LltnDDfCeRK6nZZLsMkWyOJrwtgqil94wpSKJ59jP29gZfQKHnFQgMIOyVTJclHxZ6XyAJPo/R26/nDhzqx92MH7rvd4XFwKHVme0qkpIsa2FYQQd5Daqu84D5qqkbmkaBoyPqhn+537HuIfcdV0aP3LvEYzSpG/vJ/WJ27Ru7qYuV9CQlW74RhMmnSXXInMjmp5TzbGHQrpVfioOdE65H68+xDTTgpT1f53yjmtE0A04rl9pJod2c/wIkV3+N7DYFbI7PVNMZPSbCIQSlynGwXhZyIOnQvW231JZEnRR8= amukhsimov@dell
+    lock_passwd: false
+
+# Add OBS ppa repo
+apt:
+  sources:
+    obsproject.list:
+      source: "ppa:obsproject/obs-studio"
+
+packages:
+  - curl
+  - ffmpeg
+  - git
+  - icewm
+  - libmng2
+  - mc
+  - neovim
+  - obs-studio
+  - pavucontrol
+  - python3-pip
+  - python3-testresources
+  - qt5-image-formats-plugins
+  - ranger
+  - tmux
+  - wget
+  - x11vnc
+  - xcb
+  - xvfb
+
+runcmd:
+ - [ mkdir, -p, /home/stream/.config/ ]
+ - [ mkdir, -p, /home/stream/.ssh/ ]
+ - echo 'set -o vi' >> /home/stream/.bashrc
+ - echo 'export EDITOR=nvim' >> /home/stream/.bashrc
+ - wget https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket_4.9.1-1_amd64.deb
+ - dpkg -i ./obs-websocket_4.9.1-1_amd64.deb
+ - apt -f install -y
+ - rm -rf ./obs-websocket_4.9.1-1_amd64.deb
+ - chown -R stream:stream /home/stream
+ - mkdir -p /opt/stream-services
+ - mkdir -p /lib/systemd/system/stream
+ - chown -R stream:stream /opt/stream-services
+
+package_update: true
+package_upgrade: true

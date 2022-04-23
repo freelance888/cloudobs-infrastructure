@@ -1,0 +1,10 @@
+[Unit]
+Description=Pulseaudio
+
+[Service]
+User=stream
+Restart=always
+ExecStart=pulseaudio -D
+
+[Install]
+WantedBy=multi-user.target

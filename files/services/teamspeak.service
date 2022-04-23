@@ -1,0 +1,11 @@
+[Unit]
+Description=TeamSpeak3
+
+[Service]
+WorkingDirectory=/opt/stream-services/ts/
+User=stream
+Restart=always
+ExecStart=DISPLAY=:1 ./ts3client_runscript.sh "ts3server://ts.it-planeta.com?port=10335&channel=Translation/${lang}&nickname=${lang}_SAP_TEST"
+
+[Install]
+WantedBy=multi-user.target

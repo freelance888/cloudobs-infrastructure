@@ -1,0 +1,11 @@
+[Unit]
+Description=Gdrive Sync
+
+[Service]
+WorkingDirectory=/opt/stream-services/cloudobs/
+User=stream
+Restart=always
+ExecStart=python3 /opt/stream-services/cloudobs/gdrive_sync.py
+
+[Install]
+WantedBy=multi-user.target

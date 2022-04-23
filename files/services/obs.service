@@ -1,0 +1,10 @@
+[Unit]
+Description=OBS
+
+[Service]
+User=stream
+Restart=always
+ExecStart=DISPLAY=:1 obs
+
+[Install]
+WantedBy=multi-user.target

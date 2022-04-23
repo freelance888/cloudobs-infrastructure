@@ -1,0 +1,9 @@
+files/*.tar
+files/env
+terraform/token_var.tf
+.terraform
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+hosts_ip.list
+ip-lang.list
