@@ -27,6 +27,7 @@ function setup () {
     ../files/ts_client.tar  \
     stream@$host:~
 
+  sleep 60
   # Executing provision.sh script.
   ssh stream@$host nohup bash ./provision.sh $lang #> /dev/null 2>&1
 }

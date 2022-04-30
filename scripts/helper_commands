@@ -25,3 +25,6 @@ DISPLAY=:1 obs
 # Run TeamSpeak
 DISPLAY=:1 ./ts3client_runscript.sh "ts3server://ts.it-planeta.com?port=10335&channel=Translation&nickname=OMG_IT_WORKS"
 # DISPLAY=:0 ./ts3client_runscript.sh "ts3server://allatra.ruvoice.com?port=10335&channel=Translation&nickname=OMG_IT_WORKS"
+#
+http localhost:5000/healthcheck
+http localhost:6000/healthcheck
