@@ -24,14 +24,13 @@ function update () {
 }
 
 # HOSTS SECITON
+source ip.list # Sources Lang - IP array
 
-# update "0.0.0.0" Ara 000000000000000000000000000000000
-# update "0.0.0.0" Ces 000000000000000000000000000000000
-# update "0.0.0.0" Deu 000000000000000000000000000000000
-# update "0.0.0.0" Eng 000000000000000000000000000000000
-# update "0.0.0.0" Fra 000000000000000000000000000000000
-# update "0.0.0.0" Ita 000000000000000000000000000000000
-# update "0.0.0.0" Pol 000000000000000000000000000000000
-# update "0.0.0.0" Rus 000000000000000000000000000000000
-# update "0.0.0.0" Spa 000000000000000000000000000000000
-# update "0.0.0.0" Ukr 000000000000000000000000000000000
+# Send files
+for lang in "${!IPLANG[@]}"
+do
+  echo " * Updating env file for [ $lang ] | ${IPLANG[$lang]}"
+  update "${IPLANG[$lang]}" $lang $gdrive_id & > /dev/null 2>&1
+done
+
+echo " * ENV update is complete."
