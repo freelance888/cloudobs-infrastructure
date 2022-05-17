@@ -2,12 +2,13 @@
 
 # Principle of work
 * Terraform code creates VM on hetzner and uses `userdata.yaml` file installs dependencies and upgrades the system.
-* Script `scripts/init.sh` being launched locally, copies all necessary archived files and script `scripts/provision.sh` to each remote host. Then it launching `scripts/provision.sh` remotely.
-* Script `scripts/provision.sh` being called remotely on each vm - installs all custom apps with configs, that it takes from `files` directory in the repo. If it is missing - goto [here](#missing_files)
+* Script `scripts/init.sh` being launched locally, copies all necessary files and script `scripts/provision.sh` to each remote host. Then it launching `scripts/provision.sh` remotely.
+* Script `scripts/provision.sh` being called remotely on each vm - installs all custom apps with configs.
 * Then it launching:
   * VNC server
   * TeamSpeak
   * OBS with websocket server
+  * Three special services written on python3
 ---
 # Usage
 
