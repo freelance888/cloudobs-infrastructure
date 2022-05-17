@@ -1,4 +1,5 @@
 files/*.tar
+files.tar
 files/env
 terraform/token_var.tf
 .terraform

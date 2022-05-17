@@ -38,33 +38,20 @@ terraform init
 terraform apply #--auto-approve
 ```
 6. Place your `env` file content into `files/env`. Example can be taken here https://github.com/ALLATRA-IT/cloudobs.git
-7. Add IP addresses from terraform output stdout besides lang codes, to file `scripts/init.sh` to section `#HOSTS` like in example.
+7. Add IP addresses from terraform output stdout besides lang codes, to file `scripts/ip.list`.
+You may add needed and comment not needed even in the middle of the list.
+8. Upload files to vm's
 ```
-cd ../scripts
+./init.sh --uploadfiles
 ```
+9. Then activate provisioning
 ```
- setup "0.0.0.0" Rus &
- setup "0.0.0.0" Eng &
- setup "0.0.0.0" Spa &
-# Double quotes must be present.
+./init.sh --provision
 ```
-8. Execute scripts
-```
-bash init.sh # IF FIRST TIME LAUNCH - look at `Important Notice/missing files` section of this readme.
-```
-9. Wait for a ~3-5 minutes, depending on VM size
-10. Now you can connect via obs socket,ssh, or vnc. You may use very handy filemanager `ranger` or `mc`.
+10. Depending on VM power - wait for a 40-60 seconds
+11. Now you can connect via obs socket,ssh, or vnc. You may use very handy filemanager `ranger` or `mc`.
 
 ## Important Notices
-
-### <a id="missing_files">Missing `*.tar` files in `files` directory</a><br>
-This repo should contain next files for being fully functioning:
-```
-obs-studio.tar
-ts_client.tar
-ts_config.tar
-```
-Unfortunately, currently there is no good way to save them in the repository, so you have to ask author for it, or make them by your own.
 
 ### TeamSpeak3 default identity connection limits
 Make sure your TeamSpeak identity *( that you are using for ts user )*, is allowed to connect to the same server multiple times.<br>

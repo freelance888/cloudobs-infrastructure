@@ -28,3 +28,9 @@ DISPLAY=:1 ./ts3client_runscript.sh "ts3server://ts.it-planeta.com?port=10335&ch
 #
 http localhost:5000/healthcheck
 http localhost:6000/healthcheck
+
+cd ..
+tar -cf --disable-copyfile files.tar files
+cd -
+scp provision.sh ../files.tar stream@0.0.0.0:~
+ssh stream@0.0.0.0 nohup bash ./provision.sh Ara
