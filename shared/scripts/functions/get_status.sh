@@ -5,6 +5,6 @@ function get_status () {
   do
     echo " "
     echo " $lang | [ ${IPLANG[$lang]} ] ================================"
-    ssh stream@${IPLANG[$lang]} "systemctl status common_service && systemctl status instance_service && systemctl status gdrive_sync"
+    ssh stream@${IPLANG[$lang]} "systemctl status instance_service && systemctl status gdrive_sync"
   done
 }

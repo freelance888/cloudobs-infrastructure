@@ -41,18 +41,27 @@ packages:
   - xvfb
 
 runcmd:
- - [ mkdir, -p, /home/stream/.config/ ]
- - [ mkdir, -p, /home/stream/.ssh/ ]
+ - mkdir -p /home/stream/.config/
+ - mkdir -p /home/stream/.ssh/
+ - mkdir -p /home/stream/ts
+ - mkdir -p /opt/stream-services
+ - mkdir -p /lib/systemd/system/stream
  - echo 'set -o vi' >> /home/stream/.bashrc
  - echo 'export EDITOR=nvim' >> /home/stream/.bashrc
+ - echo 'set -o vi' >> /root/.bashrc
+ - echo 'export EDITOR=nvim' >> /root/.bashrc
  - wget https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket_4.9.1-1_amd64.deb
  - dpkg -i ./obs-websocket_4.9.1-1_amd64.deb
  - apt -f install -y
  - rm -rf ./obs-websocket_4.9.1-1_amd64.deb
  - chown -R stream:stream /home/stream
- - mkdir -p /opt/stream-services
- - mkdir -p /lib/systemd/system/stream
  - chown -R stream:stream /opt/stream-services
+ - sudo -u stream bash -c 'wget https://files.teamspeak-services.com/releases/client/3.5.6/TeamSpeak3-Client-linux_amd64-3.5.6.run -O /home/stream/ts.run'
+ - sudo -u stream bash -c 'chmod +x /home/stream/ts.run'
+ - sudo -u stream bash -c '/home/stream/ts.run --tar -xf -C /home/stream/ts'
+ - sudo -u stream bash -c 'git clone https://github.com/ALLATRA-IT/cloudobs.git /opt/stream-services/cloudobs'
+ - sudo -u stream bash -c '/opt/stream-services/cloudobs; pip3 install -r requirements.txt'
+ # - reboot
 
 package_update: true
 package_upgrade: true

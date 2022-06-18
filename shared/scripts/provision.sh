@@ -18,48 +18,18 @@ mv -f files/configs/obs-studio $HOME/.config/
 
 sudo chown -R $username:$username /home/${username}
 
-# Installing TeamSpeak
-rm -rf *.run ts
-wget https://files.teamspeak-services.com/releases/client/3.5.6/TeamSpeak3-Client-linux_amd64-3.5.6.run
-mv *.run ts.run
-chmod +x ts.run
-mkdir -p ts
-./ts.run --tar -xf -C ts
-
-# Installing scripts for controlling obs
-cd /opt/stream-services
-rm -rf cloudobs
-git clone https://github.com/ALLATRA-IT/cloudobs.git
-cd cloudobs/
-
 # Setup env file
 cp ~/files/env .env
 sed -i -e '/LANG/d' .env
 echo "LANG=$lang" >> .env
 
-# Install dependencies
-pip3 install -r requirements.txt
 sudo systemctl daemon-reload
 
-sudo systemctl enable common_service
 sudo systemctl enable instance_service
 sudo systemctl enable gdrive_sync
 
-sudo systemctl start common_service
 sudo systemctl start instance_service
 sudo systemctl start gdrive_sync
-
-# sudo systemctl restart common_service
-# sudo systemctl restart instance_service
-# sudo systemctl restart gdrive_sync
-
-# systemctl status common_service
-# systemctl status instance_service
-# systemctl status gdrive_sync
-
-# journalctl -u common_service.service
-# journalctl -u instance_service.service
-# journalctl -u gdrive_sync.service
 
 # LAUNCH X SESSION
 sudo nohup Xvfb :1 -ac -screen 0 1024x768x24 &

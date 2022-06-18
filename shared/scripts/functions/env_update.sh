@@ -17,7 +17,7 @@ function env_update () {
     # Updating requiremets
     # ssh stream@$host "cd /opt/stream-services/cloudobs/ && git pull && pip3 install -r requirements.txt" > /dev/null 2>&1
 
-    ssh stream@$host sudo systemctl restart common_service   > /dev/null 2>&1
+    # ssh stream@$host sudo systemctl restart common_service   > /dev/null 2>&1
     ssh stream@$host sudo systemctl restart instance_service > /dev/null 2>&1
     ssh stream@$host sudo systemctl restart gdrive_sync      > /dev/null 2>&1
     echo "[ $host ] Updated"

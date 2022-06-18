@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function send_files () {
+function upload_files () {
   for lang in "${!IPLANG[@]}"
   do
     echo " * Sending files to [ $lang ] | ${IPLANG[$lang]}"

@@ -11,5 +11,5 @@ resource "hcloud_server" "stream_node" {
   server_type = var.instance_type
   location    = var.location
   ssh_keys    = [hcloud_ssh_key.default.id]
-  user_data   = file("./userdata.yaml")
+  user_data   = file("../shared/files/userdata.yaml")
 }

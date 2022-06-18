@@ -1,6 +1,6 @@
 variable "instances_count" {
   description = "The amount of instances you need"
-  default     = "1"
+  default     = "10"
 }
 
 variable "instance_type" {
@@ -10,7 +10,7 @@ variable "instance_type" {
 
 variable "image" {
   description = "Hetzner Cloud system image"
-  default     = "ubuntu-20.04"
+  default     = "ubuntu-22.04"
 }
 
 variable "location" {

@@ -19,3 +19,15 @@ do
 done
 
 echo " * Restart is complete."
+
+# sudo systemctl restart common_service
+# sudo systemctl restart instance_service
+# sudo systemctl restart gdrive_sync
+
+# systemctl status common_service
+# systemctl status instance_service
+# systemctl status gdrive_sync
+
+# journalctl -u common_service.service
+# journalctl -u instance_service.service
+# journalctl -u gdrive_sync.service
