@@ -4,7 +4,6 @@ function service_restart () {
   for lang in "${!IPLANG[@]}"
   do
     echo " * Restarting services for [ $lang ] | ${IPLANG[$lang]}"
-    ssh stream@${IPLANG[$lang]} sudo systemctl restart common_service   > /dev/null 2>&1
     ssh stream@${IPLANG[$lang]} sudo systemctl restart instance_service > /dev/null 2>&1
     ssh stream@${IPLANG[$lang]} sudo systemctl restart gdrive_sync      > /dev/null 2>&1
 

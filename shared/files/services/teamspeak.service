@@ -2,10 +2,11 @@
 Description=TeamSpeak3
 
 [Service]
-WorkingDirectory=/opt/stream-services/ts/
+WorkingDirectory=/home/stream/ts
 User=stream
-Restart=always
-ExecStart=DISPLAY=:1 ./ts3client_runscript.sh "ts3server://ts.it-planeta.com?port=10335&channel=Translation/${lang}&nickname=${lang}_SAP_TEST"
+Restart=on-failure
+ExecStart=/home/stream/ts/ts3client_runscript.sh ts3server://ts.it-planeta.com?port=10335&channel=Translation/${lang}&nickname=${lang}_Synthetic_StreamListener
+Environment="DISPLAY=:1"
 
 [Install]
-WantedBy=multi-user.target
+kantedBy=multi-user.target

@@ -31,3 +31,5 @@ echo " * Restart is complete."
 # journalctl -u common_service.service
 # journalctl -u instance_service.service
 # journalctl -u gdrive_sync.service
+# journalctl -u obs.service
+# journalctl -u teamspeak.service

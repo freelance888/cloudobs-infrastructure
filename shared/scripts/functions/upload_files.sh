@@ -13,4 +13,6 @@ function upload_files () {
     scp provision.sh ../files.tar stream@${IPLANG[$lang]}:~ > /dev/null 2>&1
 
   done
+  rm -rf ../files.tar
+
 }

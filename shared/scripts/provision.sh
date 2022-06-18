@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sleep 40
+# sleep 40
 lang=$1
 username="stream"
 # TODO: Add check to make sure scipt have paswordless sudo.
@@ -19,6 +19,7 @@ mv -f files/configs/obs-studio $HOME/.config/
 sudo chown -R $username:$username /home/${username}
 
 # Setup env file
+cd /opt/stream-services/cloudobs
 cp ~/files/env .env
 sed -i -e '/LANG/d' .env
 echo "LANG=$lang" >> .env
@@ -27,6 +28,8 @@ sudo systemctl daemon-reload
 
 sudo systemctl enable instance_service
 sudo systemctl enable gdrive_sync
+sudo systemctl enable obs
+sudo systemctl enable teamspeak
 
 sudo systemctl start instance_service
 sudo systemctl start gdrive_sync
@@ -41,6 +44,9 @@ sleep 3
 mkdir -p $HOME/.vnc
 x11vnc -display :1 -storepasswd homeworld /home/$username/.vnc/passwd
 x11vnc -display :1 -forever -rfbauth /home/$username/.vnc/passwd &
+
+# sudo systemctl start obs
+# sudo systemctl start teamspeak
 
 # Run Obs with websocket.
 DISPLAY=:1 nohup obs &

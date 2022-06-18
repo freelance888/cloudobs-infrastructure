@@ -3,8 +3,9 @@ Description=OBS
 
 [Service]
 User=stream
-Restart=always
-ExecStart=DISPLAY=:1 obs
+Restart=on-failure
+ExecStart=obs
+Environment="DISPLAY=:1"
 
 [Install]
-WantedBy=multi-user.target
+kantedBy=multi-user.target
