@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-# sleep 40
+while [ ! -f /DONE ]
+do
+  sleep 2
+done
+
 lang=$1
 username="stream"
 # TODO: Add check to make sure scipt have paswordless sudo.
