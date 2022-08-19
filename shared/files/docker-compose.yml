@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+
+  backend:
+    image: cloudobs-$ENVIRONMENT
+    ports:
+      - '5000:$BACKEND_PORT'
+    volumes:
+      - ./sa.json:/app/sa.json
+
+  frontend:
+    image: cloudobs-client-$ENVIRONMENT
+    ports:
+      - '3003:$OUT_PORT'
+    environment:
+      - CLOUD_OBS_HOST=backend-$ENVIRONMENT
+      - CLOUD_OBS_PORT=$BACKEND_PORT
+    depends_on:
+      - backend
