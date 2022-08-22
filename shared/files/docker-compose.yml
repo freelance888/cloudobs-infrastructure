@@ -3,6 +3,8 @@ services:
 
   backend:
     image: cloudobs-$ENVIRONMENT
+    env_file:
+      - ./.env
     ports:
       - '$BACKEND_PORT:5000'
     volumes:
