@@ -7,6 +7,7 @@ services:
       - ./.env
     ports:
       - '$BACKEND_PORT:5000'
+      - '127.0.0.1:$BACKEND_HTTPS_PORT:5001'
     volumes:
       - ./sa.json:/app/sa.json
 
