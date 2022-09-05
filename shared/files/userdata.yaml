@@ -28,7 +28,7 @@ packages:
   - libmng2
   - mc
   - neovim
-  - obs-studio
+  - [obs-studio, 27.1.3-0obsproject1~hirsute]
   - pavucontrol
   - python3-pip
   - python3-testresources
