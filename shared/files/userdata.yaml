@@ -28,7 +28,6 @@ packages:
   - libmng2
   - mc
   - neovim
-  - [obs-studio, 27.1.3-0obsproject1~hirsute]
   - pavucontrol
   - python3-pip
   - python3-testresources
@@ -39,6 +38,7 @@ packages:
   - x11vnc
   - xcb
   - xvfb
+  # - [obs-studio, 27.1.3-0obsproject1~hirsute]
 
 runcmd:
  - mkdir -p /home/stream/.config/
@@ -50,8 +50,10 @@ runcmd:
  - echo 'export EDITOR=nvim' >> /home/stream/.bashrc
  - echo 'set -o vi' >> /root/.bashrc
  - echo 'export EDITOR=nvim' >> /root/.bashrc
- - wget https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket_4.9.1-1_amd64.deb
- - dpkg -i ./obs-websocket_4.9.1-1_amd64.deb
+ - wget https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket_4.9.1-1_amd64.deb -O obs-websocket.deb
+ - wget https://launchpad.net/~obsproject/+archive/ubuntu/obs-studio/+files/obs-studio_27.1.3-0obsproject1~hirsute_amd64.deb -O obs-studio.deb
+ - dpkg -i ./obs-websocket.deb
+ - dpkg -i ./obs-studio.deb
  - apt -f install -y
  - rm -rf ./obs-websocket_4.9.1-1_amd64.deb
  - chown -R stream:stream /home/stream
