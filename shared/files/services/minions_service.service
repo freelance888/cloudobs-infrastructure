@@ -3,7 +3,7 @@ Description=Minions Service
 
 [Service]
 WorkingDirectory=/opt/stream-services/cloudobs/
-User=stream
+User=user
 Restart=always
 ExecStart=python3 /opt/stream-services/cloudobs/minions_service.py
 
