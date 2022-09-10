@@ -1,0 +1,11 @@
+[Unit]
+Description=Minions Service
+
+[Service]
+WorkingDirectory=/opt/stream-services/cloudobs/
+User=stream
+Restart=always
+ExecStart=python3 /opt/stream-services/cloudobs/minions_service.py
+
+[Install]
+WantedBy=multi-user.target
