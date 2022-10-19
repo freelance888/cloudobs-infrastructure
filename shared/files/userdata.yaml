@@ -12,6 +12,8 @@ users:
     ssh_authorized_keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB4PmWN0Ipp8dllqr66Vf3TRoq7Sx+hf1QfD7fAGwIl0 vm-service
       - ssh-ed25519 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDOxnANuMT7aImxlfYFDEhwtlVibT/TIwojZ56pnC65cZ/GRtviQ8vYpW2qbKwUONpV1O+uwHtmtBQLTfTINa7K2yHZLcXo8Qzsx1sQ94JuqKzLu0IRnJAGaiuP9f2ffysHnaJsHj2YSqKhXAgnvPa/w6asAjBeZM7D8h3Scuj4YGEsuNE6KrjbSASAPo3tRnXoegjCegN1saSyONUL58IP+LltnDDfCeRK6nZZLsMkWyOJrwtgqil94wpSKJ59jP29gZfQKHnFQgMIOyVTJclHxZ6XyAJPo/R26/nDhzqx92MH7rvd4XFwKHVme0qkpIsa2FYQQd5Daqu84D5qqkbmkaBoyPqhn+537HuIfcdV0aP3LvEYzSpG/vJ/WJ27Ru7qYuV9CQlW74RhMmnSXXInMjmp5TzbGHQrpVfioOdE65H68+xDTTgpT1f53yjmtE0A04rl9pJod2c/wIkV3+N7DYFbI7PVNMZPSbCIQSlynGwXhZyIOnQvW231JZEnRR8= amukhsimov@dell
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIwIUEnpG/EA7jCfZLYkxEb1gEhizO3/eS8h+5o/9j/s service_automation
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHkIrLqlL9AloMwoQZ9NfkIeAIXRmMHFt782bXLjVcNU serhii@MacBook-Pro-3
     lock_passwd: false
 
 # Add OBS ppa repo
@@ -56,7 +58,7 @@ runcmd:
  - wget https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket_4.9.1-1_amd64.deb
  - sudo dpkg -i libobs0_27.2.3+dfsg1-1_amd64.deb
  - sudo dpkg -i obs-plugins_27.2.3+dfsg1-1_amd64.deb
- - sudo apt install libspa-0.2-modules libv4lconvert0 libmbedcrypto7 libmbedtls14 libmbedx509-1 libpipewire-0.3-0 libqt5xml5 libv4l-0
+ - sudo apt install -y libspa-0.2-modules libv4lconvert0 libmbedcrypto7 libmbedtls14 libmbedx509-1 libpipewire-0.3-0 libqt5xml5 libv4l-0
  - sudo dpkg -i obs-studio_27.2.3+dfsg1-1_amd64.deb
  - sudo dpkg -i obs-websocket_4.9.1-1_amd64.deb
  - apt -f install -y
@@ -70,6 +72,3 @@ runcmd:
  - git clone https://github.com/amukhsimov/gdown.git && cd gdown && pip install .
  - touch /DONE
  # - reboot
-
-package_update: true
-package_upgrade: true

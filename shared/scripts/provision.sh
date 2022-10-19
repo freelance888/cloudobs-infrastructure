@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+rm /home/stream/PROVISION_STATUS
+echo "IN PROGRESS" > /home/stream/PROVISION_STATUS
 while [ ! -f /DONE ]
 do
   sleep 2
@@ -6,7 +8,7 @@ done
 
 lang=$1
 username="stream"
-# TODO: Add check to make sure scipt have paswordless sudo.
+# TODO: Add check to make sure script have paswordless sudo.
 
 # Cleaning
 rm -rf .ts3client .config/obs-studio
@@ -58,3 +60,6 @@ DISPLAY=:1 nohup obs &
 # Run TeamSpeak
 cd $HOME/ts
 DISPLAY=:1 ./ts3client_runscript.sh "ts3server://ts.it-planeta.com?port=10335&channel=Translation/${lang}&nickname=${lang}_Synthetic_StreamListener" > /dev/null 2>&1 &
+
+rm /home/stream/PROVISION_STATUS
+echo "DONE" > /home/stream/PROVISION_STATUS
