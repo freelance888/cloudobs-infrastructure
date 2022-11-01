@@ -9,9 +9,9 @@ function create_vm () {
     echo " * Generating vm number [ $count ] "
     hcloud server create                           \
       --image=ubuntu-22.04                         \
-      --type=cpx41                                 \
-      --location=hel1                              \
-      --ssh-key=streaming_automation               \
+      --type=cpx51                                 \
+      --location=fsn1                              \
+      --ssh-key=service_automation               \
       --user-data-from-file=../files/userdata.yaml \
       --name=streaming-node-$count &
     count=$(( $count + 1 ))
