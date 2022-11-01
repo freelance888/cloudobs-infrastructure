@@ -10,7 +10,7 @@ function upload_files () {
     cd ..
     COPYFILE_DISABLE=1 tar -cvf files.tar files > /dev/null 2>&1
     cd - > /dev/null 2>&1
-    scp provision.sh ../files.tar stream@${IPLANG[$lang]}:~ > /dev/null 2>&1
+    scp provision.sh ../files.tar sa.json stream@${IPLANG[$lang]}:~ > /dev/null 2>&1
 
   done
   rm -rf ../files.tar
