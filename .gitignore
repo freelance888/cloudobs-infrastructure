@@ -11,3 +11,4 @@ hosts_ip.list
 ip-lang.list
 *.DS_Store*
 .idea*
+*sa.json
