@@ -12,3 +12,7 @@ ip-lang.list
 *.DS_Store*
 .idea*
 *sa.json
+creds.cfg
+existing
+expected
+unexpected
