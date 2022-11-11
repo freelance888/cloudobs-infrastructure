@@ -5,7 +5,7 @@ function provision () {
   do
     echo " * Provisionion [ $lang ] | ${IPLANG[$lang]}"
     # ssh stream@${IPLANG[$lang]} nohup bash ./provision.sh $lang &
-    sleep 1
+    sleep 2
     ssh stream@${IPLANG[$lang]} nohup bash ./provision.sh $lang > /dev/null 2>&1 &
   done
 }

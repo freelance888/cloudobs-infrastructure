@@ -10,7 +10,7 @@ function create_vm () {
     hcloud server create                           \
       --image=ubuntu-22.04                         \
       --type=cpx51                                 \
-      --location=fsn1                              \
+      --location=nbg1                              \
       --ssh-key=service_automation               \
       --user-data-from-file=../files/userdata.yaml \
       --name=streaming-node-$count &
