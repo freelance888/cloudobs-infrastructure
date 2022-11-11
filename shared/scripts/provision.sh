@@ -12,6 +12,7 @@ username="stream"
 
 # Cleaning
 kill -15 $(pgrep -f ts3client_linux_amd64)
+sleep 15
 pkill --signal 15 obs
 rm -rf .ts3client .config/obs-studio
 
