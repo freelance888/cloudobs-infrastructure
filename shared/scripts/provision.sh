@@ -12,7 +12,7 @@ username="stream"
 
 # Cleaning
 kill -15 $(pgrep -f ts3client_linux_amd64)
-sleep 30
+sleep 10
 pkill --signal 15 obs
 rm -rf .ts3client .config/obs-studio
 
@@ -38,6 +38,8 @@ sudo systemctl enable gdrive_sync
 sudo systemctl enable obs
 sudo systemctl enable teamspeak
 
+sudo systemctl stop instance_service
+sudo systemctl stop gdrive_sync
 sudo systemctl start instance_service
 sudo systemctl start gdrive_sync
 
