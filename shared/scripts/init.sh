@@ -19,15 +19,16 @@ source functions/delete_all_vms.sh
 
 while [ $# -gt 0 ] ; do
   case $1 in
-    -c | --create-vm)       create_vm $INSTANCES_COUNT && get_ip ;;
-    -p | --provision)       provision                            ;;
-    -s | --status)          get_status                           ;;
-    -u | --upload-files)    upload_files                         ;;
-    -i | --getip)           get_ip                               ;;
-    -d | --delete-all-vms)  delete_all_vms                       ;; # WIP
+    -c  | --create-vm)       create_vm $INSTANCES_COUNT && get_ip ;;
+    -p  | --provision)       provision                            ;;
+    -s  | --status)          get_status                           ;;
+    -u  | --upload-files)    upload_files                         ;;
+    -u2 | --upload-files2)   upload_files 2                       ;;
+    -i  | --getip)           get_ip                               ;;
+    -d  | --delete-all-vms)  delete_all_vms                       ;; # WIP
     # -e | --env-update)       env_update ;; # WIP
     # -r | --restart-services) service_restart ;; # WIP
-    -h | --help) echo " Available arguments:
+    -h  | --help) echo " Available arguments:
   -c | --create-vm <COUNT>
   -p | --provision
   -s | --status
