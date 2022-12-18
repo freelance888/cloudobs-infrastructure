@@ -9,7 +9,7 @@ function upload_files () {
     # scp ../files/services/* root@${IPLANG[$lang]}:/lib/systemd/system/ > /dev/null 2>&1 &
     cd ..
     COPYFILE_DISABLE=1 tar -cvf files.tar files > /dev/null 2>&1
-    if [ $1 = 2 ] then # Needed for upload ts config with a second identity .If first argument of the function is 2, arg, that was provided to it from init.sh script.
+    if [ $1 = 2 ]; then # Needed for upload ts config with a second identity .If first argument of the function is 2, arg, that was provided to it from init.sh script.
       # Renaming main config to unused and second to actual
       mv files/.ts3client files/old_tsconf
       mv files/.ts3client2 files/.ts3client
