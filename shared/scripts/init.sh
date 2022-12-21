@@ -23,10 +23,10 @@ while [ $# -gt 0 ] ; do
     -p | --provision)       upload_files && provision            ;;
     -s | --status)          get_status                           ;;
     -i | --getip)           get_ip                               ;;
-    --start-recording)      start_rec                            ;;
-    --stop-recording)       stop_rec                             ;;
-    --get-recording)        get_rec                              ;;
-    --delete-recording)     del_rec                              ;;
+    --start-rec)            start_rec                            ;;
+    --stop-rec)             stop_rec                             ;;
+    --get-rec)              get_rec                              ;;
+    --del-rec)              del_rec                              ;;
     -d | --delete-all-vms)  delete_all_vms                       ;; # WIP
     # -e | --env-update)       env_update ;; # WIP
     # -r | --restart-services) service_restart ;; # WIP
@@ -36,7 +36,12 @@ while [ $# -gt 0 ] ; do
   -s | --status
   -u | --uploadfiles
   -d | --delete-all-vms
-  -i | --getip";;
+  -i | --getip
+  --start-rec
+  --stop-rec
+  --get-rec
+  --del-rec
+  --help";;
 
   esac
   shift

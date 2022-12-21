@@ -6,7 +6,7 @@ function start_rec () {
   for lang in "${!IPLANG[@]}"
   do
     echo " * Starting recording for [ $lang ] | ${IPLANG[$lang]}"
-    ssh stream@${IPLANG[$lang]} "nohup ffmpeg -f pulse -i default ${lang}.wav & > /dev/null 2>&1"
+    ssh stream@${IPLANG[$lang]} "nohup ffmpeg -f pulse -i default ${lang}.wav > /dev/null 2>&1 &"
   done
 }
 
@@ -19,17 +19,20 @@ function stop_rec () {
 }
 
 function get_rec () {
+  echo -e "\n!!! Preliminary wiping content of [ recordings/$TODAY_DATE ] directory.\n"
+  rm -rf recordings/$TODAY_DATE/*
+
   for lang in "${!IPLANG[@]}"
   do
     echo " * Downloading recording file for [ $lang ] | ${IPLANG[$lang]}"
-    scp stream@${IPLANG[$lang]}:${lang}.wav recordings/$TODAY_DATE
+    scp stream@${IPLANG[$lang]}:${lang}.wav recordings/$TODAY_DATE &
   done
 }
 
 function del_rec () {
   for lang in "${!IPLANG[@]}"
   do
-    echo " * Deleting recording file for [ $lang ] | ${IPLANG[$lang]}"
+    echo " * Deleting remote recording file for [ $lang ] | ${IPLANG[$lang]}"
     ssh stream@${IPLANG[$lang]} "rm -rf ${lang}.wav"
   done
 }
