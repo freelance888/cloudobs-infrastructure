@@ -76,3 +76,6 @@ runcmd:
  - touch /DONE
  # - reboot
 
+package_update: true
+package_upgrade: true
+
