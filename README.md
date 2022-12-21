@@ -37,19 +37,23 @@ _You may add needed and comment not needed even in the middle of the list._
 
 7. Place your `env` file content into `shared/files/env`. Example can be taken here https://github.com/ALLATRA-IT/cloudobs.git
 
-8. Upload files to vm's
-```
-./init.sh --upload-files
-```
-
-9. Then activate provisioning
+8. Then activate provisioning
 ```
 ./init.sh --provision
 ```
 
-10. Depending on VM power - wait for a 40-60 seconds
+9. Depending on VM power - wait for a 40-60 seconds
 
-11. Now you can connect via obs socket,ssh, or vnc. You may use very handy filemanager `ranger` or `mc`.
+10. Now you can connect via obs socket,ssh, or vnc. You may use very handy filemanager `ranger` or `mc`.
+
+## Recording of audio streams from TeamSpeak
+Use these flags for the `init.sh` script to proceed
+```
+  --start-rec # Starting recording using ffmpeg on pulse main output into the <lang>.wav file
+  --stop-rec  # Gracefully kills ffmpeg process to stop recording
+  --get-rec   # Creates dir with current date name and starts downloading process into it
+  --del-rec   # Purges local recordings directory content and deletes remote recording file
+```
 
 ## Important Notices
 
