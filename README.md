@@ -47,11 +47,12 @@ _You may add needed and comment not needed even in the middle of the list._
 10. Now you can connect via obs socket,ssh, or vnc. You may use very handy filemanager `ranger` or `mc`.
 
 ## Recording of audio streams from TeamSpeak
+Use these flags for the `init.sh` script to proceed
 ```
   --start-rec # Starting recording using ffmpeg on pulse main output into the <lang>.wav file
-  --stop-rec # Gracefully kills ffmpeg process to stop recording
-  --get-rec # Creates dir with current date name and starts downloading process into it
-  --del-rec # Purges local recordings directory content and deletes remote recording file
+  --stop-rec  # Gracefully kills ffmpeg process to stop recording
+  --get-rec   # Creates dir with current date name and starts downloading process into it
+  --del-rec   # Purges local recordings directory content and deletes remote recording file
 ```
 
 ## Important Notices
