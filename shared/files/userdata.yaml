@@ -3,6 +3,8 @@
 runcmd:
 - [touch, /root/cloud-init-worked]
 
+timezone: Europe/Kiev
+
 users:
   - name: stream
     groups: users, admin, sudo
@@ -73,3 +75,4 @@ runcmd:
  - git clone https://github.com/amukhsimov/gdown.git && cd gdown && pip install .
  - touch /DONE
  # - reboot
+
