@@ -3,13 +3,13 @@ INSTANCES_COUNT=$2
 
 source ip.list # Sources Lang - IP array
 source functions/create_vm.sh
+source functions/delete_all_vms.sh
 source functions/env_update.sh
 source functions/get_ip.sh
 source functions/get_status.sh
 source functions/provision.sh
-source functions/upload_files.sh
+source functions/recording.sh
 source functions/service_restart.sh
-source functions/delete_all_vms.sh
 
 # # Check if no args supplied
 # if [ -z $* ]; then
@@ -20,10 +20,12 @@ source functions/delete_all_vms.sh
 while [ $# -gt 0 ] ; do
   case $1 in
     -c | --create-vm)       create_vm $INSTANCES_COUNT && get_ip ;;
-    -p | --provision)       provision                            ;;
+    -p | --provision)       upload_files && provision            ;;
     -s | --status)          get_status                           ;;
-    -u | --upload-files)    upload_files                         ;;
     -i | --getip)           get_ip                               ;;
+    --start-recording)      start_rec                            ;;
+    --stop-recording)       stop_rec                             ;;
+    --get-recording)        get_rec                              ;;
     -d | --delete-all-vms)  delete_all_vms                       ;; # WIP
     # -e | --env-update)       env_update ;; # WIP
     # -r | --restart-services) service_restart ;; # WIP
@@ -33,7 +35,7 @@ while [ $# -gt 0 ] ; do
   -s | --status
   -u | --uploadfiles
   -d | --delete-all-vms
-  -u | --getip";;
+  -i | --getip";;
 
   esac
   shift

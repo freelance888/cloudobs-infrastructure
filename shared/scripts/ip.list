@@ -1,5 +1,4 @@
 declare -A IPLANG
 IPLANG=(
-# [Abk]=0.0.0.0
-# [Abq]=0.0.0.0
+[Eng]=5.75.184.20
 )
