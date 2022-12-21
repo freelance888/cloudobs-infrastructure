@@ -26,6 +26,7 @@ while [ $# -gt 0 ] ; do
     --start-recording)      start_rec                            ;;
     --stop-recording)       stop_rec                             ;;
     --get-recording)        get_rec                              ;;
+    --delete-recording)     del_rec                              ;;
     -d | --delete-all-vms)  delete_all_vms                       ;; # WIP
     # -e | --env-update)       env_update ;; # WIP
     # -r | --restart-services) service_restart ;; # WIP

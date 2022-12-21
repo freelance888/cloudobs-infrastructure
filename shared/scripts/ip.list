@@ -1,4 +1,4 @@
 declare -A IPLANG
 IPLANG=(
-[Eng]=5.75.184.20
+[Eng]=162.55.59.153
 )
