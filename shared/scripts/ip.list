@@ -1,4 +1,6 @@
 declare -A IPLANG
 IPLANG=(
-[Eng]=0.0.0.0
+  [Bel]=157.90.225.138
+# [Abk]=0.0.0.0
+# [Abq]=0.0.0.0
 )
