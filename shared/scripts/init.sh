@@ -1,50 +1,52 @@
 #!/usr/bin/env bash
-INSTANCES_COUNT=$2
+INSTANCES_COUNT=$3
+CLOUD=""
 
 source ip.list # Sources Lang - IP array
-source functions/create_vm.sh
-source functions/delete_all_vms.sh
-source functions/env_update.sh
-source functions/get_ip.sh
-source functions/get_status.sh
-source functions/provision.sh
-source functions/recording.sh
-source functions/service_restart.sh
+source functions/core.sh
 
-# # Check if no args supplied
-# if [ -z $* ]; then
-#   echo "No options found!"
-#   exit 1
-# fi
-
-while [ $# -gt 0 ] ; do
-  case $1 in
-    -c | --create-vm)       create_vm $INSTANCES_COUNT && get_ip ;;
-    -p | --provision)       upload_files && provision            ;;
-    -s | --status)          get_status                           ;;
-    -i | --getip)           get_ip                               ;;
-    --start-rec)            start_rec                            ;;
-    --stop-rec)             stop_rec                             ;;
-    --get-rec)              get_rec                              ;;
-    --del-rec)              del_rec                              ;;
-    -d | --delete-all-vms)  delete_all_vms                       ;; # WIP
-    # -e | --env-update)       env_update ;; # WIP
-    # -r | --restart-services) service_restart ;; # WIP
-    -h | --help) echo " Available arguments:
-  -c | --create-vm <COUNT>
-  -p | --provision
-  -s | --status
-  -u | --uploadfiles
-  -d | --delete-all-vms
-  -i | --getip
-  --start-rec
-  --stop-rec
-  --get-rec
-  --del-rec
-  --help";;
-
+function set_cloud () {
+  local cloud_name=$1
+  case $cloud_name in
+    do)      source functions/digital-ocean.sh  ;;
+    hetzner) source functions/hetzner.sh        ;;
+    *) echo "Unsupported cloud name [ $cloud_name ]." && exit        ;;
   esac
-  shift
-done
+}
 
-# sendfiles provision launchapps envupdate restartservices getstatus
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+    -o|--cloud)            set_cloud $2
+      shift 2 ;;
+    -c|--create-vm)        create_vm $2 && get_ip
+      shift 2 ;;
+    -p|--provision)        upload_files && provision
+      shift 2 ;;
+    -i|--getip)            get_ip
+      shift 2 ;;
+    -s|--status)           get_status
+      shift 2 ;;
+    -u | --uploadfiles)    upload_files
+      shift 2 ;;
+    -d | --delete-all-vms) delete_all_vms
+      shift 2 ;;
+    -s|--status)           get_status
+      shift 2 ;;
+
+    --start-rec)           start_rec
+      shift 2 ;;
+    --stop-rec)            stop_rec
+      shift 2 ;;
+    --get-rec)             get_rec
+      shift 2 ;;
+    --del-rec)             del_rec
+      shift 2 ;;
+
+    --)
+      shift
+      break ;;
+    *)
+      echo "Invalid option: $1" >&2
+      exit 1 ;;
+  esac
+done
