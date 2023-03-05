@@ -18,7 +18,7 @@ while [[ "$#" -gt 0 ]]; do
   case $1 in
     -o|--cloud)            set_cloud $2
       shift 2 ;;
-    -c|--create-vm)        create_vm $2 && get_ip
+    -c|--create-vm)        create_vm $2
       shift 2 ;;
     -p|--provision)        upload_files && provision
       shift 2 ;;

@@ -24,8 +24,10 @@ function create_vm () {
 
 function delete_all_vms () {
   for droplet_id in $(doctl compute droplet list --format "ID" --no-header); do doctl compute droplet delete --force $droplet_id; done
+  exit
 }
 
 function get_ip () {
   doctl compute droplet list --no-header --format "PublicIPv4"
+  exit
 }
