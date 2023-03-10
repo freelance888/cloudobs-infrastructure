@@ -16,7 +16,7 @@ function create_vm () {
       --ssh-keys "b2:66:15:b3:d1:2f:8c:56:5d:fb:17:5b:91:16:e2:a5"                 \
       --user-data-file=../files/userdata.yaml  \
       --wait                                   \
-      streaming-node-$count &
+      do-streaming-node-$count &
 
     count=$(( $count + 1 ))
   done

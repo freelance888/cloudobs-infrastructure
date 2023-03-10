@@ -15,7 +15,7 @@ function create_vm () {
       --location=nbg1                              \
       --ssh-key=service_automation                 \
       --user-data-from-file=../files/userdata.yaml \
-      --name=streaming-node-$count &
+      --name=hetzner-streaming-node-$count &
 
     count=$(( $count + 1 ))
   done
@@ -30,8 +30,10 @@ function delete_all_vms () {
   for i in $instances; do
     hcloud server delete $i
   done
+  exit
 }
 
 function get_ip () {
   hcloud server list -o columns=ipv4 -o noheader | sort
+  exit
 }
