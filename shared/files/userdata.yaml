@@ -81,6 +81,7 @@ runcmd:
  - sudo -u stream bash -c '/home/stream/ts.run --tar -xf -C /home/stream/ts'
  - sudo -u stream bash -c 'git clone https://github.com/ALLATRA-IT/cloudobs.git /opt/stream-services/cloudobs'
  - sudo -u stream bash -c 'cd /opt/stream-services/cloudobs; pip3 install -r requirements.txt'
+ - sudo -u stream bash -c 'pip3 install pyopenssl --upgrade'
  - git clone https://github.com/amukhsimov/gdown.git && cd gdown && pip install .
  - touch /DONE
  # - reboot
