@@ -79,7 +79,7 @@ runcmd:
  - sudo -u stream bash -c 'wget https://files.teamspeak-services.com/releases/client/3.5.6/TeamSpeak3-Client-linux_amd64-3.5.6.run -O /home/stream/ts.run'
  - sudo -u stream bash -c 'chmod +x /home/stream/ts.run'
  - sudo -u stream bash -c '/home/stream/ts.run --tar -xf -C /home/stream/ts'
- - sudo -u stream bash -c 'git clone https://github.com/ALLATRA-IT/cloudobs.git /opt/stream-services/cloudobs'
+ - sudo -u stream bash -c 'git clone -b dev https://github.com/ALLATRA-IT/cloudobs.git /opt/stream-services/cloudobs'
  - sudo -u stream bash -c 'cd /opt/stream-services/cloudobs; pip3 install -r requirements.txt'
  - sudo -u stream bash -c 'pip3 install pyopenssl --upgrade'
  - git clone https://github.com/amukhsimov/gdown.git && cd gdown && pip install .
