@@ -20,6 +20,7 @@ function create_vm () {
 
     count=$(( $count + 1 ))
   done
+  exit
 }
 
 function delete_all_vms () {
