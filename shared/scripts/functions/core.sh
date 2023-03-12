@@ -58,6 +58,7 @@ function provision () {
     sleep 2
     ssh stream@${IPLANG[$lang]} nohup bash ./provision.sh $lang > /dev/null 2>&1 &
   done
+  exit
 }
 
 TODAY_DATE="$(date +'%d.%m.%Y')"

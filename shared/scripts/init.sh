@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -o nounset # Treat unset variables as an error and immediately exit
-set -o errexit # If a command fails exit the whole script
+# set -o errexit # If a command fails exit the whole script
 
 if [ "${DEBUG:-false}" = "true" ]; then
   set -x # Run the entire script in debug mode
