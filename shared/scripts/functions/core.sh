@@ -48,6 +48,7 @@ function upload_files () {
 
   done
   rm -rf ../files.tar
+  exit
 }
 
 function provision () {
@@ -58,6 +59,7 @@ function provision () {
     sleep 2
     ssh stream@${IPLANG[$lang]} nohup bash ./provision.sh $lang > /dev/null 2>&1 &
   done
+  exit
 }
 
 TODAY_DATE="$(date +'%d.%m.%Y')"
@@ -69,6 +71,7 @@ function start_rec () {
     echo " * Starting recording for [ $lang ] | ${IPLANG[$lang]}"
     ssh stream@${IPLANG[$lang]} "nohup ffmpeg -f pulse -i default ${lang}.wav > /dev/null 2>&1 &"
   done
+  exit
 }
 
 function stop_rec () {
@@ -77,6 +80,7 @@ function stop_rec () {
     echo " * Stopping recording for [ $lang ] | ${IPLANG[$lang]}"
     ssh stream@${IPLANG[$lang]} "pkill ffmpeg --signal 15"
   done
+  exit
 }
 
 function get_rec () {
@@ -88,6 +92,7 @@ function get_rec () {
     echo " * Downloading recording file for [ $lang ] | ${IPLANG[$lang]}"
     scp stream@${IPLANG[$lang]}:${lang}.wav recordings/$TODAY_DATE &
   done
+  exit
 }
 
 function del_rec () {
@@ -96,6 +101,7 @@ function del_rec () {
     echo " * Deleting remote recording file for [ $lang ] | ${IPLANG[$lang]}"
     ssh stream@${IPLANG[$lang]} "rm -rf ${lang}.wav"
   done
+  exit
 }
 
 function service_restart () {
@@ -113,4 +119,5 @@ function service_restart () {
     sleep 2
     ssh stream@${IPLANG[$lang]} "cd ts && DISPLAY=:1 ./ts3client_runscript.sh \"ts3server://ts.it-planeta.com?port=10335&channel=Translation/${lang}&nickname=${lang}_StreamListener\" &" > /dev/null 2>&1 &
   done
+  exit
 }
