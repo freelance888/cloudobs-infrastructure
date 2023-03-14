@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Hetzner functions loaded."
+#echo "Hetzner functions loaded."
 function create_vm () {
   local instances_count=$1
   local count=1
@@ -19,6 +19,7 @@ function create_vm () {
 
     count=$(( $count + 1 ))
   done
+  exit
 }
 
 function delete_all_vms () {
