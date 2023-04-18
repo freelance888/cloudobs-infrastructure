@@ -64,5 +64,8 @@ DISPLAY=:1 nohup obs &
 cd $HOME/ts
 DISPLAY=:1 ./ts3client_runscript.sh "ts3server://ts.it-planeta.com?port=10335&channel=Translation/${lang}&nickname=${lang}_Synthetic_StreamListener" > /dev/null 2>&1 &
 
+pactl load-module module-null-sink sink_name=monitor_sink sink_properties=device.description=monitor_sink
+pactl load-module module-null-sink sink_name=obs_sink sink_properties=device.description=obs_sink
+
 rm /home/stream/PROVISION_STATUS
 echo "DONE" > /home/stream/PROVISION_STATUS
