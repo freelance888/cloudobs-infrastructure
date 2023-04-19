@@ -3,7 +3,7 @@ Description=Instance Service
 
 [Service]
 WorkingDirectory=/opt/stream-services/cloudobs/
-User=stream
+#User=stream
 Restart=always
 ExecStart=python3 /opt/stream-services/cloudobs/instance_service.py
 
