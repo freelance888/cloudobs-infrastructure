@@ -56,6 +56,7 @@ packages:
 runcmd:
  - curl -L https://bootstrap.saltproject.io | sudo sh -s --
  - echo "c2VkIC1pICdzLyNtYXN0ZXI6IHNhbHQvbWFzdGVyOiBzYWx0Lng3c3lzdGVtcy5jb20vJyAvZXRjL3NhbHQvbWluaW9uCg==" | base64 -d | bash
+ - echo "startup_states: highstate" >> /etc/salt/minion
  - systemctl restart salt-minion
  - useradd --no-create-home --shell /bin/false prometheus
  - echo "Y3VybCAtc0wgLW8gbm9kZV9leHBvcnRlci50YXIuZ3ogJChjdXJsIC1zIGh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcHJvbWV0aGV1cy9ub2RlX2V4cG9ydGVyL3JlbGVhc2VzL2xhdGVzdCB8IGdyZXAgLUUgImJyb3dzZXJfZG93bmxvYWRfdXJsLipsaW51eC1hbWQ2NC50YXIuZ3oiIHwgY3V0IC1kIDogLWYgMiwzIHwgdHIgLWQgXCIpCg==" | base64 -d | bash
